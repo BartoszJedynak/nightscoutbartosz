@@ -3,7 +3,7 @@ name: CI to Docker Hube
 on:
   push:
     tags:
-      - "v*1*.0*"
+      - "v1"
 
 jobs:
 
