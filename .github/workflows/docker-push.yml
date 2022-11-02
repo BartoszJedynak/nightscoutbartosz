@@ -14,8 +14,9 @@ jobs:
       run: | # log into docker hub account
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
     - name: Get current date # get the date of the build
-      id: nightscoutbartosz
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d--%M-%S')"
     - name: Build the Docker image # push The image to the docker hub
-      run: docker build . --file Dockerfile --tag bartoszjedynak/nightscoutbartosz
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ nightscoutbartosz }}
     - name: Docker Push
-      run: docker push $DOCKER_USER/$REPO_NAME
+      run: docker push $DOCKER_USER/$REPO_NAME:${{ nightscoutbartosz }}
